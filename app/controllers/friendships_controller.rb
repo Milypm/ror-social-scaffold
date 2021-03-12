@@ -17,7 +17,7 @@ class FriendshipsController < ApplicationController
   def edit; end
 
   def create
-    if who_sent_invite.friend?(who_received_invite)
+    if current_user.friends.include?(who_sent_invite)
       redirect_back fallback_location: @users, notice: 'You already have a friendship with this user!'
     else
       @friendship = current_user.friendships.build(friend_id: params[:friend_id], confirmed: false)
@@ -30,9 +30,8 @@ class FriendshipsController < ApplicationController
   end
 
   def accept_friendship
-    puts who_received_invite.id
-    puts who_sent_invite.id
     if who_received_invite.confirm_friend(who_sent_invite)
+      Friendship.create!(friend_id: who_sent_invite.id, user_id: who_received_invite.id, confirmed: true)
       redirect_to friendships_path(@user), notice: 'Friend Request Accepted!'
     else
       redirect_to friendships_path(@user), notice: 'Unable to accept friend request'

@@ -9,14 +9,14 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :friendships # foreign_key: 'user_id'
-  has_many :inverse_friendships, class_name: 'Friendship', foreign_key: 'friend_id'
 
-  def friends
-    friends_arr = friendships.map { |friendship| friendship.friend if friendship.confirmed }
-    inverse_friendships.map { |friendship| friends_arr.push(friendship.user) if friendship.confirmed }
-    friends_arr.compact
-  end
+  has_many :friendships
+  has_many :confirmed_friendships, -> { where confirmed: true }, class_name: 'Friendship'
+  has_many :friends, through: :confirmed_friendships
+  has_many :pending_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'user_id'
+  has_many :pending_friends, through: :pending_friendships, source: :friend
+  has_many :inverted_friendships, -> { where confirmed: false }, class_name: 'Friendship', foreign_key: 'friend_id'
+  has_many :friend_requests, through: :inverted_friendships, source: :user
 
   def confirm_friend(friend)
     friendship = Friendship.find_by(user_id: friend.id, friend_id: id)
@@ -24,12 +24,8 @@ class User < ApplicationRecord
     friendship.save
   end
 
-  def pending_friend_requests
-    inverse_friendships.select { |friendship| friendship.user unless friendship.confirmed }
-  end
-
-  def pending_requests
-    inverse_friendships.each { |friendship| return false unless friendship.confirmed }
+  def friends_and_own_posts
+    Post.where(user: (friends.to_a << self))
   end
 
   def decline_friendship(friend)

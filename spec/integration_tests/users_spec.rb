@@ -53,7 +53,7 @@ RSpec.describe 'User', type: :feature do
       login(user1)
       visit '/users'
       first('.btn-outline-success').click
-      page.should have_content('Recent posts:')
+      page.has_content?('Recent posts:')
     end
   end
 end
