@@ -1,16 +1,21 @@
 # Scaffold for social media app with Ruby on Rails
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+> This Ruby on Rails project was forked from the original repository [ror-social-scaffold](https://github.com/microverseinc/ror-social-scaffold), and emulates the general functions of a social media app.
+
+> Features already built:
+- Users authentication (using devise).
+- Posts.
+- Comments.
+- Likes.
+
+> Feature I implemented:
+- Users Friendships.
 
 ## Built With
 
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
-
-## Live Demo
-
-TBA
-
+- PostgreSQL
 
 ## Getting Started
 
@@ -24,70 +29,27 @@ Postgres: >=9.5
 
 ### Setup
 
-Instal gems with:
+* It's recommended to use Git's latest version.
+* Clone or download the repo from here [ror-social-scaffold](https://github.com/Milypm/ror-social-scaffold) on your local system.
+- Click on the "Code" green button and copy HTTPS URL.
+- Go to your local system, on an empty folder, to clone the repo: 'git clone -HTTPS URL-'.
+- Go to the repo folder.
+- Install the dependencies: 'bundle install'.
+- Migrate the database: 'rails db:migrate'.
+- Start the server: 'rails server' or 'rails s'.
+- Copy/open the path given to open the project in the browser: 'http://localhost:3000/'.
 
-```
-bundle install
-```
+## Testing with RSpec / Capybara
+- On the command line, go to the application's root directory, and type: 'rspec'.
+- You now should see the tests outcome for unit and integration tests included in the '/spec' directory.
 
-Setup database with:
-
-```
-   rails db:create
-   rails db:migrate
-```
-
-### Github Actions
-
-To make sure the linters' checks using Github Actions work properly, you should follow the next steps:
-
-1. On your recently forked repo, enable the GitHub Actions in the Actions tab.
-2. Create the `feature/branch` and push.
-3. Start working on your milestone as usual.
-4. Open a PR from the `feature/branch` when your work is done.
-
-
-### Usage
-
-Start server with:
-
-```
-    rails server
-```
-
-Open `http://localhost:3000/` in your browser.
-
-### Run tests
-
-```
-    rpsec --format documentation
-```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
-
-## Authors
-
-TBA
-
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!
-
-Feel free to check the [issues page](issues/).
+## Author
+**Mily Puente** :woman_technologist:
+- GitHub: [@Milypm](https://github.com/Milypm)
+- LinkedIn: [Mily Puente](https://www.linkedin.com/in/milypuentem/)
 
 ## Show your support
+Give a :star2: if you like this project!
 
-Give a ⭐️ if you like this project!
-
-## Acknowledgments
-
-TBA
-
-## 📝 License
-
-TBA
-
+## License
+<p>This project is <a href="../feature/LICENSE">MIT</a> licensed.</p>

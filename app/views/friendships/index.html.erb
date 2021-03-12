@@ -1,0 +1,14 @@
+<table class="text-center" style="width: 30rem;">
+  <thead>
+    <tr>
+      <th><h1>My Friends</h1></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @friends.each do |friend| %>
+      <tr class="text-success d-flex justify-content-center my-3">
+        <td class="d-flex justify-content-start" style="width: 10rem;"><i class="fas fa-check-circle fs-4 mt-1"></i><h3><%= friend.name %></h3></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

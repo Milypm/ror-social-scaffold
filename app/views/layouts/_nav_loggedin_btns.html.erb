@@ -1,0 +1,11 @@
+<% if current_user %>
+  <div class="d-flex justify-content-between align-items-start" style="width: 21rem;">
+    <h6 class="mt-2 mr-4 fw-bold">Hi, <%= link_to current_user.name,  user_path(current_user.id), class: 'text-white text-decoration-none' %>!</h6>
+    <div class="d-flex justify-content-between" style="width: 12rem;">
+      <%= link_to 'My Friends', friendships_path(current_user.id), class: 'mt-1' %>
+      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'mt-1' %>
+    </div>
+  </div>
+<% else %>
+  <%= link_to 'Sign in', user_session_path %>
+<% end %>

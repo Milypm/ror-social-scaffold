@@ -156,9 +156,10 @@ form {
       background-color: $primary-color-light;
     }
 
+    /**** linters: invalid value for width
     input[type="checkbox"] {
       width: fit-content;
-    }
+    } ****/
   }
 
   .actions {

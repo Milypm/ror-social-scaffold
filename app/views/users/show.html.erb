@@ -1,9 +1,17 @@
-<section class="user-section">
-  <h2><%= "Name: #{@user.name}" %></h2>
-  <article class="timeline">
-    <h3>Recent posts:</h3>
-    <ul class="posts">
-      <%= render @posts %>
-    </ul>
-  </article>
+<section class="d-flex justify-content-between" style="width: 72rem;">
+  <div class="d-flex flex-column border border-5 border-secondary rounded-3 py-2 px-3" style="width: 40rem;">
+    <div class="d-flex justify-content-between py-2 px-3">
+      <h2 class="fw-bolder text-success"><%= @user.name %></h2>
+      <%= show_friendship_btn %>
+    </div>
+    <article class="timeline mx-4" style="width: 35rem;>
+      <h3>Recent posts:</h3>
+      <ul class="posts">
+        <%= render @posts %>
+      </ul>
+    </article>
+  </div>
+  <div>
+    <%= show_friend_requests %>
+  </div>
 </section>

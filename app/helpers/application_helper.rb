@@ -15,4 +15,12 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def likes_number(post)
+    return unless Like.find_by(post: post)
+
+    num_likes = 0
+    Like.all.each { |li| num_likes += 1 if li.post_id == post.id }
+    "#{num_likes} Likes"
+  end
 end

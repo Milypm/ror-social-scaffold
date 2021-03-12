@@ -1,6 +1,9 @@
 <li>
-  Name: <%= user.name %>
-  <span class="profile-link">
-    <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
-  </span>
+  <div class="d-flex justify-content-between pt-2 pb-3 border-bottom border-3 border-secondary" style="width: 29rem;">
+    <h3 class="fw-bold text-success"><%= user.name %></h3>
+    <span class="d-flex justify-content-between" style="width: 12rem;">
+      <%= link_to 'See Profile',  user_path(user), class: 'btn btn-outline-success btn-sm mb-2' %>
+      <%= index_friendship_btn(user) %>
+    </span>
+  </div>
 </li>
